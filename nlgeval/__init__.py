@@ -213,7 +213,7 @@ class NLGEval(object):
 
         return ret_scores
 
-    def compute_specifc_metric(self, ref_list, hyp_list, metric):
+    def compute_specific_metric(self, ref_list, hyp_list, metric):
         ref_list = [list(map(str.strip, refs)) for refs in zip(*ref_list)]
         refs = {idx: strippedlines for (idx, strippedlines) in enumerate(ref_list)}
         hyps = {idx: [lines.strip()] for (idx, lines) in enumerate(hyp_list)}

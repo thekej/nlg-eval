@@ -222,12 +222,14 @@ class NLGEval(object):
         ret_scores = {}
         if not self.no_overlap:
             for scorer, method in self.scorers:
-                if method == metric:
-                    score, scores = scorer.compute_score(refs, hyps)
-                    if isinstance(method, list):
+                if isinstance(method, list):
+                    if metric in method:
+                        score, scores = scorer.compute_score(refs, hyps)
                         for sc, scs, m in zip(score, scores, method):
-                            ret_scores[m] = sc
-                    else:
+                            if m == metric:
+                                ret_scores[m] = sc
+                else:
+                    if method == metric:
                         ret_scores[method] = score
 
         return ret_scores

@@ -13,7 +13,7 @@ METEOR_JAR = 'meteor-1.5.jar'
 
 
 def enc(s):
-    return unicode(s, 'utf-8')
+    return s.encode('utf-8')
 
 def dec(s):
     return s.decode('utf-8')
